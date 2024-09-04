@@ -1,0 +1,10 @@
+Get 2 numbers 'a' and 'b' from the user, along with the operator 'o'.
+if o is not inside the set ('+', '-', '*', '/', '%') then repeat line #1
+
+if o is '+' then set Res to a + b.
+else if o is '-' then set Res to a - b.
+else if o is '*' then set Res to a * b.
+else if o is '/' then set Res to a / b.
+else if o is '%' then set Res to a % b i.e the remainder after dividing a by b
+
+Display Res to the user
