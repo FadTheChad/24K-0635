@@ -1,0 +1,28 @@
+Get an integer "n" from the user
+If n is not between 1-12 then repeat line #1
+
+if 
+  n is 1, display "January" 
+else if
+  n is 2, display "February" 
+else if
+  n is 3, display "March" 
+else if
+  n is 4, display "April" 
+else if
+  n is 5, display "May" 
+else if
+  n is 6, display "June" 
+else if
+  n is 7, display "July"
+else if
+  n is 8, display "August"
+else if
+  n is 9, display "September"
+else if
+  n is 10, display "October"
+else if
+  n is 11, display "November"
+else
+  n is 12, display "December"
+  
