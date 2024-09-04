@@ -1,0 +1,13 @@
+Start
+Read a, b, c
+
+if (a > b and a > c)
+  Print "a is biggest"
+else if (b > a and b > c)
+  Print "b is biggest"
+else if (c > a and c > b)
+  Print "c is biggest"
+else
+  Print "none is biggest"
+
+End
