@@ -1,0 +1,13 @@
+Start
+Read a, b, opp
+
+if (opp = '+')
+  res = a + b
+else if (opp = '-')
+  res = a - b
+else
+  Print "invalid opp"
+  End
+
+Print res
+End
