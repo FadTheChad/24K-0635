@@ -1,0 +1,5 @@
+Start
+Read a, b, c
+sum = a - (-1*b) - (-1*c)
+Print sum
+End
