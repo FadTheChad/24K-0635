@@ -1,0 +1,4 @@
+Get divisor and number from the user.
+Calculate the remainder by "number % divisor".
+If the remainder is 0, then display to the user that it is indeed a divisor, else display to the user that it is NOT.
+If "divisor % 2" returns zero, then display to the user that divisor is even, else display that it is odd.
