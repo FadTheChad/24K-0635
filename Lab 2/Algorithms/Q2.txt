@@ -1,28 +1,20 @@
 Get an integer "n" from the user
 If n is not between 1-12 then repeat line #1
 
-if 
-  n is 1, display "January" 
-else if
-  n is 2, display "February" 
-else if
-  n is 3, display "March" 
-else if
-  n is 4, display "April" 
-else if
-  n is 5, display "May" 
-else if
-  n is 6, display "June" 
-else if
-  n is 7, display "July"
-else if
-  n is 8, display "August"
-else if
-  n is 9, display "September"
-else if
-  n is 10, display "October"
-else if
-  n is 11, display "November"
-else
-  n is 12, display "December"
-  
+Have a list of the following:
+1 = January
+2 = February
+3 = March
+4 = April
+5 = May
+6 = June
+7 = July
+8 = August
+9 = September
+10 = October
+11 = November
+12 = December
+
+Get the appropriate month using 'n' as an index, and set it to Result
+
+Display Result to the user.
