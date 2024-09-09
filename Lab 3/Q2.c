@@ -11,6 +11,6 @@ int main()
   b = a;
   a = temp;
 
-  printf("a=%d\nb=%d", a. b");
+  printf("a=%d\nb=%d", a, b);
   return 0;
 }
