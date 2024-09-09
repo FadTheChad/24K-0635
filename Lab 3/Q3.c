@@ -13,7 +13,7 @@ int main()
 
   int taxed_salary = salary * (1 - tax_rate);
 
-  print("Total tax: %d", salary - taxed_salary);
+  printf("Total tax: %d", salary - taxed_salary);
   printf("Salary after taxes: %d", taxed_salary);
 
   return 0;
