@@ -15,8 +15,8 @@ int main()
         : gpa < 3.0
         ? "(no message)"
         : gpa < 3.5 
-        ? printf("Dean's list")
-        : printf("Highest honors")
+        ? "Dean's list"
+        : "Highest honors"
     );
 
     return 0;
