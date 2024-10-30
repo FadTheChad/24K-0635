@@ -39,7 +39,7 @@ int main()
             if (count != 0)
             {
                 grid[i][j] = '*';
-                j++;
+                j += 2;
                 if (count != 3)
                     grid[i][j] = '*';
             }
@@ -47,17 +47,23 @@ int main()
     }
 
     printf("GRID:\n");
-    for (int i = 0; i <= 4; i++)
+    int i2 = 0;
+    while (i2 <= 4)
     {
-        for (int j = 0; j < 105; j++)
+        int j2 = 0;
+        while (j2 < 105)
         {
-            if (grid[i][j] == '*')
+            if (grid[i2][j2] == '*')
             {
-                printf("%c", grid[i][j]);
+                printf("%c", grid[i2][j2]);
             }
             else
+            {
                 printf(" ");
+            }
+            j2++;
         }
         printf("\n");
+        i2++;
     }
 }
