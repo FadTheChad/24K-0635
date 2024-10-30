@@ -2,7 +2,7 @@
 
 int main()
 {
-    char grid[100][100] = {};
+    char grid[105][105] = {};
     int i = 4, j = 0;
     int up = 1;
     int spaces = 1;
@@ -29,25 +29,32 @@ int main()
         if (i == 0 && up == 1)
         {
             up = 0;
+            spaces--;
         }
         else if (i == 4 && up == 0)
         {
+            spaces = 1;
             up = 1;
+            count++;
             if (count != 0)
             {
                 grid[i][j] = '*';
+                j++;
+                if (count != 3)
+                    grid[i][j] = '*';
             }
-            count++;
         }
     }
 
     printf("GRID:\n");
     for (int i = 0; i <= 4; i++)
     {
-        for (int j = 0; j < 100; j++)
+        for (int j = 0; j < 105; j++)
         {
             if (grid[i][j] == '*')
+            {
                 printf("%c", grid[i][j]);
+            }
             else
                 printf(" ");
         }
