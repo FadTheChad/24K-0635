@@ -1,79 +1,90 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_WORD_LENGTH 50
-#define INITIAL_CAPACITY 100
+#define MAX_WORDS 1000
+#define MAX_WORD_LEN 50
 
+// contains each word with num of occurances
 typedef struct
 {
-    char word[MAX_WORD_LENGTH];
+    char word[MAX_WORD_LEN];
     int count;
 } WordCount;
 
-int findWord(WordCount *wordCounts, int size, char *word)
+WordCount words[MAX_WORDS];
+int wordCount = 0;
+
+void addOrIncrementWord(const char *word)
 {
-    for (int i = 0; i < size; i++)
+    // if word exists in the struct array, we add one to the count
+    for (int i = 0; i < wordCount; i++)
     {
-        if (strcmp(wordCounts[i].word, word) == 0)
+        if (strcmp(words[i].word, word) == 0)
         {
-            return i;
+            words[i].count++;
+            return;
         }
     }
-    return -1;
-}
 
-void toLowerCase(char *word)
-{
-    for (int i = 0; word[i]; i++)
+    // else we just add it to the array, and initialize count to 1.
+    if (wordCount < MAX_WORDS)
     {
-        word[i] = tolower(word[i]);
+        strcpy(words[wordCount].word, word);
+        words[wordCount].count = 1;
+        wordCount++;
     }
 }
 
-int main()
+void processFile(const char *filename)
 {
-    FILE *file = fopen("input.txt", "r");
-    if (file == NULL)
+    FILE *file = fopen(filename, "r");
+    if (!file)
     {
-        printf("Cannot open file.\n");
-        return 1;
+        perror("Error opening file");
+        return;
     }
 
-    WordCount *wordCounts = malloc(INITIAL_CAPACITY * sizeof(WordCount));
-    int size = 0;
-    int capacity = INITIAL_CAPACITY;
-
-    char word[MAX_WORD_LENGTH];
-    while (fscanf(file, "%49s", word) != EOF)
+    char word[MAX_WORD_LEN];
+    while (fscanf(file, "%49s", word) == 1)
     {
-        toLowerCase(word);
-        int index = findWord(wordCounts, size, word);
-        if (index != -1)
+        char cleanWord[MAX_WORD_LEN];
+        int j = 0;
+        for (int i = 0; word[i]; i++)
         {
-            wordCounts[index].count++;
-        }
-        else
-        {
-            if (size == capacity)
+            if (isalnum(word[i]))
             {
-                capacity *= 2;
-                wordCounts = realloc(wordCounts, capacity * sizeof(WordCount));
+                cleanWord[j++] = tolower(word[i]);
             }
-            strcpy(wordCounts[size].word, word);
-            wordCounts[size].count = 1;
-            size++;
+        }
+        cleanWord[j] = '\0';
+
+        if (j > 0)
+        {
+            addOrIncrementWord(cleanWord);
         }
     }
 
     fclose(file);
+}
 
-    for (int i = 0; i < size; i++)
+void printWordCounts()
+{
+    for (int i = 0; i < wordCount; i++)
     {
-        printf("%s: %d\n", wordCounts[i].word, wordCounts[i].count);
+        printf("%s: %d\n", words[i].word, words[i].count);
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+        return 1;
     }
 
-    free(wordCounts);
+    processFile(argv[1]);
+    printWordCounts();
     return 0;
 }

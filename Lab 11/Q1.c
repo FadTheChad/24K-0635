@@ -2,33 +2,25 @@
 
 int main()
 {
-    FILE *sourceFile, *targetFile;
-    char ch;
+    FILE *file = fopen("data.txt", "r");
+    char content[50];
 
-    sourceFile = fopen("source.txt", "r");
-    if (sourceFile == NULL)
+    if (file == NULL)
     {
-        printf("Cannot open source file.\n");
+        printf("Error");
         return 1;
     }
+    fscanf(file, "%s", content);
+    printf("Content: %s\n", content);
+    fclose(file);
 
-    targetFile = fopen("target.txt", "w");
-    if (targetFile == NULL)
+    // reused original variable
+    file = fopen("copied_data.txt", "w");
+    if (file == NULL)
     {
-        fclose(sourceFile);
-        printf("Cannot open target file.\n");
+        printf("Error");
         return 1;
     }
-
-    while ((ch = fgetc(sourceFile)) != EOF)
-    {
-        fputc(ch, targetFile);
-    }
-
-    printf("File copied successfully.\n");
-
-    fclose(sourceFile);
-    fclose(targetFile);
-
-    return 0;
+    fprintf(file, "%s\n", content);
+    fclose(file);
 }
