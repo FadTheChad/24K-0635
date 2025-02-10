@@ -8,9 +8,9 @@ private:
     int carID;
     string model;
     int year;
-    bool isRented;
 
 public:
+    bool isRented;
     Car() : isRented(false) {}
 
     Car(int cID, string m, int y, bool rented = false)
